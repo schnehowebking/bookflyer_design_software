@@ -1,0 +1,21 @@
+{% extends 'flyer/base.html' %}
+{% block content %}
+    <h1>Templates</h1>
+    <div class="row">
+    {% for t in templates %}
+        <div class="col-md-3">
+            <div class="card mb-3">
+                {% if t.thumbnail %}
+                    <img src="{{ t.thumbnail.url }}" class="card-img-top">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ t.name }}</h5>
+                    <a href="{% url 'flyer:editor' %}" class="btn btn-primary">Use Template</a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No templates yet. Create some in admin.</p>
+    {% endfor %}
+    </div>
+{% endblock %}
